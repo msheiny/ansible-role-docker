@@ -1,0 +1,12 @@
+---
+- name: YUM | Configure Docker repository
+  yum_repository:
+    name: dockerrepo
+    description: Docker Repository
+    baseurl: "https://yum.dockerproject.org/repo/main/{{ ansible_distribution|lower}}/{{ ansible_distribution_major_version }}/"
+    enabled: 1
+    gpgcheck: 1
+    gpgkey: https://yum.dockerproject.org/gpg
+
+- name: YUM | Install Docker Application
+  yum: name=docker-engine state=present
