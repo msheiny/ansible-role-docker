@@ -16,7 +16,7 @@ Install docker to your machine.
 
     - hosts: servers
       roles:
-         - role: ericsysmin.docker
+         - role: avinetworks.docker
 
 License
 -------
