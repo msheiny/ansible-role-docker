@@ -1,5 +1,9 @@
 ---
 # tasks file for ansible-role-docker
-- name: Start Docker Service
-  notify:
-    - start docker
+- name: Docker | Start Installation | Debian
+  include: apt.yml
+  when: ansible_os_family != "Debian"
+
+- name: Docker | Start Installation | RedHat
+  include: yum.yml
+  when: ansible_os_family != "RedHat"
