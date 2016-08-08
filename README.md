@@ -21,7 +21,7 @@ Install docker to your machine.
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
