@@ -20,7 +20,7 @@
 #The linux-image-extra package allows you use the aufs storage driver.
 - name: Ubuntu | Install the linux-image-extra kernal package
   apt: name="linux-image-extra-{{ ansible_kernel }}" state=present
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version in ['14.04','15.10','16.04']
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version in ['14.04','15.10']
 
 #If you are installing on Ubuntu 14.04 or 12.04, apparmor is required.
 - name: Ubuntu | Install AppArmor Dependency
