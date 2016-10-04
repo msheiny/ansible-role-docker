@@ -7,9 +7,7 @@ This role provides the following:
 * It will manage kernel versions as well, verifying the that the correct kernel for Docker support is installed.
 
 Supports the following Operating Systems:
-* CentOS 6
-* CentOS 6
-* OracleLinux 6
+* CentOS 7
 * OracleLinux 7
 * Ubuntu 12.04
 * Ubuntu 14.04
