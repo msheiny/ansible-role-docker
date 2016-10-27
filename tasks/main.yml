@@ -6,4 +6,5 @@
 - name: Start the Docker Process and Start at Boot
   service:
     name: docker
+    enabled: yes
     state: started

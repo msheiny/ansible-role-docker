@@ -1,6 +1,8 @@
 # avinetworks.docker
 
 [![Build Status](https://travis-ci.org/avinetworks/ansible-role-docker.svg?branch=master)](https://travis-ci.org/avinetworks/ansible-role-docker)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.docker-blue.svg)](https://galaxy.ansible.com/avinetworks/docker/)
+
 
 This role provides the following:
 * Installation of Docker following Docker-Engine install procedures as documented by Docker.
@@ -9,6 +11,7 @@ This role provides the following:
 Supports the following Operating Systems:
 * CentOS 6
 * CentOS 7
+* OracleLinux 6
 * OracleLinux 7
 * Ubuntu 12.04
 * Ubuntu 14.04
@@ -28,7 +31,7 @@ Install docker to your machine.
 
 ## License
 
-BSD
+MIT
 
 ## Author Information
 
