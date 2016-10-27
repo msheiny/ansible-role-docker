@@ -1,6 +1,8 @@
 # avinetworks.docker
 
-[![Build Status](https://travis-ci.org/avinetworks/ansible-role-docker.svg?branch=master)](https://travis-ci.org/avinetworks/ansible-role-docker)[![Ansible Role](https://img.shields.io/ansible/role/3078.svg)](https://galaxy.ansible.com/avinetworks/docker/)
+[![Build Status](https://travis-ci.org/avinetworks/ansible-role-docker.svg?branch=master)](https://travis-ci.org/avinetworks/ansible-role-docker)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.docker-blue.svg)](https://galaxy.ansible.com/avinetworks/docker/)
+
 
 This role provides the following:
 * Installation of Docker following Docker-Engine install procedures as documented by Docker.
