@@ -6,7 +6,5 @@
 - name: Start the Docker Process and Start at Boot
   service:
     name: docker
+    enabled: yes
     state: started
-  register: docker_install
-
-- debug: var=docker_install
