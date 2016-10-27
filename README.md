@@ -9,6 +9,7 @@ This role provides the following:
 Supports the following Operating Systems:
 * CentOS 6
 * CentOS 7
+* OracleLinux 6
 * OracleLinux 7
 * Ubuntu 12.04
 * Ubuntu 14.04
