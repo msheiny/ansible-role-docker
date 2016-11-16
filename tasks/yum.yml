@@ -28,5 +28,8 @@
     gpgcheck: 1
     gpgkey: https://yum.dockerproject.org/gpg
 
+- name: YUM | Remove Old Docker
+  yum: name=docker state=absent
+
 - name: YUM | Install Docker Application
   yum: name=docker-engine state=present

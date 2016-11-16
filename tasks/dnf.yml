@@ -8,5 +8,8 @@
     gpgcheck: 1
     gpgkey: https://yum.dockerproject.org/gpg
 
+- name: DNF | Remove Old Docker
+  dnf: name=docker state=absent
+
 - name: DNF | Install Docker Application
   dnf: name=docker-engine state=present
