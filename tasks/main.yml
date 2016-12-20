@@ -1,5 +1,8 @@
 ---
 # tasks file for avinetworks.docker
+- name: Docker | Include Specific Variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - name: Docker | Start Installation
   include: "{{ ansible_pkg_mgr }}.yml"
 
