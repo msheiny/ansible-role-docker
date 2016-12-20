@@ -19,17 +19,37 @@
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
   when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == "7"
 
-- name: YUM | Configure Docker repository
-  yum_repository:
-    name: dockerrepo
-    description: Docker Repository
-    baseurl: "https://yum.dockerproject.org/repo/main/{{ ansible_distribution|lower}}/{{ ansible_distribution_major_version }}/"
-    enabled: 1
-    gpgcheck: 1
-    gpgkey: https://yum.dockerproject.org/gpg
-
-- name: YUM | Remove Old Docker
+- name: YUM | Remove previous docker
   yum: name=docker state=absent
 
-- name: YUM | Install Docker Application
-  yum: name=docker-engine state=present
+- block:
+    - name: YUM | Configure Docker repository | CentOS and OracleLinux
+      yum_repository:
+        name: dockerrepo
+        description: Docker Repository
+        baseurl: "https://yum.dockerproject.org/repo/main/{{ ansible_distribution|lower}}/{{ ansible_distribution_major_version }}/"
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: https://yum.dockerproject.org/gpg
+      when: ansible_distribution != "RedHat"
+    - name: YUM | Configure Docker repository | RedHat
+      yum_repository:
+        name: dockerrepo
+        description: Docker Repository
+        baseurl: "https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }}/"
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: https://yum.dockerproject.org/gpg
+      when: ansible_distribution == "RedHat"
+    - name: YUM | Remove previous docker-io
+      yum: name=docker-io state=absent
+    - name: YUM | Install Docker Application
+      yum: name=docker-engine state=present
+  when: ansible_distribution_version != "6.5"
+
+- name: YUM | Install RHEL/OEL 6.5 Supported Docker
+  yum: name="{{ item }}" state=present
+  with_items:
+    - device-mapper-libs-1.02.117-7.el6_8.1.x86_64
+    - docker-io
+  when: ansible_distribution_version == "6.5"
