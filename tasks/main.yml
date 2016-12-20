@@ -4,7 +4,4 @@
   include: "{{ ansible_pkg_mgr }}.yml"
 
 - name: Start the Docker Process and Start at Boot
-  service:
-    name: docker
-    enabled: yes
-    state: started
+  service: name=docker enabled=yes state=started
