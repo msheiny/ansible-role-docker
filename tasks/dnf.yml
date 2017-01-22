@@ -1,4 +1,21 @@
 ---
+
+- name: DNF | Loadup GPG value
+  set_fact:
+    docker_gpg_key: "{{ lookup('pipe', 'curl -s '+docker_yum_gpg_url) }}"
+  become: no
+
+- name: DNF | Verify Docker GPG value
+  shell: echo '{{ docker_gpg_key }}' | gpg2 | grep -q {{ docker_gpg_fprint }}
+  args:
+    executable: /bin/bash
+  register: register_gpg_verify
+
+- name: DNF | Drop GPG value into local file
+  copy:
+    content: "{{ docker_gpg_key }}"
+    dest: "{{ docker_yum_gpg_local }}"
+
 - name: DNF | Configure Docker repository
   yum_repository:
     name: dockerrepo
@@ -6,7 +23,7 @@
     baseurl: "https://yum.dockerproject.org/repo/main/{{ ansible_distribution|lower}}/{{ ansible_distribution_major_version }}/"
     enabled: 1
     gpgcheck: 1
-    gpgkey: https://yum.dockerproject.org/gpg
+    gpgkey: "file://{{ docker_yum_gpg_local }}"
 
 - name: DNF | Remove Old Docker
   dnf: name=docker state=absent
