@@ -30,7 +30,7 @@
         baseurl: "https://yum.dockerproject.org/repo/main/{{ docker_package_directory }}/{{ ansible_distribution_major_version }}/"
         enabled: 1
         gpgcheck: 1
-        gpgkey: https://yum.dockerproject.org/gpg
+        gpgkey: "{{ docker_yum_gpg_url }}"
     - name: YUM | Remove previous docker-io
       yum: name=docker-io state=absent
     - name: YUM | Install Docker Application
